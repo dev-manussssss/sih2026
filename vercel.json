@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "public": true,
+  "cleanUrls": true,
+  "routes": [
+    { "src": "/api/problems", "dest": "/data/sih_2026_problems.json" },
+    { "src": "/data/(.*)", "dest": "/data/$1" },
+    { "src": "/static/(.*)", "dest": "/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}

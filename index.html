@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-density="normal">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SIH 2026 Problem Statement Explorer — Browse, research, evaluate, score, compare and select all 226 Smart India Hackathon problem statements.">
+  <title>SIH 2026 Problem Explorer</title>
+  <!-- Embedded SVG Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231d4ed8'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ── Sidebar ──────────────────────────────────────────────── -->
+  <nav id="sidebar">
+    <div class="sidebar-logo">
+      <h1>SIH 2026</h1>
+      <div class="subtitle">Problem Explorer</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Explore</div>
+      <div class="nav-item active" data-view="all" id="nav-all">
+        <span class="nav-icon">☰</span> All Problems
+        <span class="nav-badge" id="badge-all">226</span>
+      </div>
+      <div class="nav-item" data-view="dashboard" id="nav-dashboard">
+        <span class="nav-icon">◉</span> Dashboard
+      </div>
+      <div class="nav-item" data-view="shortlist" id="nav-shortlist">
+        <span class="nav-icon">★</span> Shortlist
+        <span class="nav-badge" id="badge-shortlist">0</span>
+      </div>
+      <div class="nav-item" data-view="top" id="nav-top">
+        <span class="nav-icon">▲</span> Top Candidates
+      </div>
+      <div class="nav-item" data-view="compare" id="nav-compare">
+        <span class="nav-icon">⇌</span> Compare
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Status</div>
+      <div class="nav-item" data-view="all" data-filter="unread" id="nav-unread">
+        <span class="nav-icon">○</span> Unread
+        <span class="nav-badge" id="badge-unread">226</span>
+      </div>
+      <div class="nav-item" data-view="all" data-filter="read" id="nav-read">
+        <span class="nav-icon">✓</span> Read
+        <span class="nav-badge" id="badge-read">0</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Track</div>
+      <div class="nav-item" data-view="all" data-filter="software" id="nav-software">
+        <span class="nav-icon">💻</span> Software
+        <span class="nav-badge" id="badge-software">—</span>
+      </div>
+      <div class="nav-item" data-view="all" data-filter="hardware" id="nav-hardware">
+        <span class="nav-icon">⚙</span> Hardware
+        <span class="nav-badge" id="badge-hardware">—</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Preferences</div>
+      <div class="nav-item" data-view="settings" id="nav-settings">
+        <span class="nav-icon">⚙</span> Settings & Data
+      </div>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-progress" id="sidebar-progress-text">0 / 226 read</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="sidebar-progress-bar" style="width:0%"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Main Area ────────────────────────────────────────────── -->
+  <div id="main">
+
+    <!-- Top bar (shown for list views) -->
+    <div id="topbar">
+      <div class="topbar-title" id="topbar-title">All Problems</div>
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search problems, orgs, themes, technologies… (Press '/' to focus)" autocomplete="off">
+      </div>
+      <div class="topbar-actions">
+        <select class="filter-select" id="sort-select" title="Sort by">
+          <option value="id">Sort: Problem ID</option>
+          <option value="alpha">Title: A → Z</option>
+          <option value="alpha-desc">Title: Z → A</option>
+          <option value="score-desc">Highest Opportunity Score</option>
+          <option value="feasibility-desc">Highest Feasibility</option>
+          <option value="impact-desc">Highest Impact</option>
+          <option value="recent">Recently Viewed</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Filter bar -->
+    <div id="filterbar">
+      <div class="filter-group">
+        <span class="filter-label">Track</span>
+        <span class="filter-chip active" data-filter="category" data-value="" id="fc-all">All</span>
+        <span class="filter-chip" data-filter="category" data-value="Software" id="fc-sw">Software</span>
+        <span class="filter-chip" data-filter="category" data-value="Hardware" id="fc-hw">Hardware</span>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Status</span>
+        <span class="filter-chip active" data-filter="read" data-value="" id="fc-rs-all">All</span>
+        <span class="filter-chip" data-filter="read" data-value="unread" id="fc-unread">Unread</span>
+        <span class="filter-chip" data-filter="read" data-value="read" id="fc-read">Read</span>
+        <span class="filter-chip" data-filter="read" data-value="shortlisted" id="fc-sl">Shortlisted</span>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Theme</span>
+        <select class="filter-select" id="theme-filter">
+          <option value="">All Themes</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Org</span>
+        <select class="filter-select" id="org-filter">
+          <option value="">All Orgs</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Domain</span>
+        <select class="filter-select" id="rescat-filter">
+          <option value="">All Domains</option>
+        </select>
+      </div>
+      <div class="result-count" id="result-count">226 problems</div>
+    </div>
+
+    <!-- Content Area -->
+    <div id="content">
+
+      <!-- ── All Problems View ───────────────────────────────── -->
+      <div id="list-view" class="view active">
+        <div id="problems-list">
+          <div class="loading-state">Loading SIH 2026 problem statements…</div>
+        </div>
+      </div>
+
+      <!-- ── Dashboard View ─────────────────────────────────── -->
+      <div id="dashboard-view" class="view">
+        <div style="padding:var(--space-6) var(--space-8);">
+          <div class="dash-title">Dashboard Overview</div>
+
+          <div class="stats-grid" id="stats-grid">
+            <div class="stat-card">
+              <div class="sc-num" id="stat-total">226</div>
+              <div class="sc-label">Total Problems</div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-num" id="stat-read">0</div>
+              <div class="sc-label">Read</div>
+              <div class="sc-sub" id="stat-read-pct">0% complete</div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-num" id="stat-unread">226</div>
+              <div class="sc-label">Unread Remaining</div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-num" id="stat-shortlist">0</div>
+              <div class="sc-label">Shortlisted</div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-num" id="stat-sw">151</div>
+              <div class="sc-label">Software</div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-num" id="stat-hw">29</div>
+              <div class="sc-label">Hardware</div>
+            </div>
+          </div>
+
+          <!-- Progress bar -->
+          <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-5);margin-bottom:var(--space-8);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3);">
+              <span style="font-size:13px;font-weight:600;">Overall Reading Progress</span>
+              <span style="font-size:13px;color:var(--text-tertiary)" id="dash-progress-pct">0%</span>
+            </div>
+            <div class="progress-bar-wrap" style="height:10px;">
+              <div class="progress-bar-fill" id="dash-progress-bar" style="width:0%"></div>
+            </div>
+          </div>
+
+          <div class="dash-section-title">Top High-Potential Candidates (by Research Opportunity Score)</div>
+          <div class="top-list" id="dash-top-list"></div>
+
+          <div class="breakdown-grid">
+            <div class="breakdown-card">
+              <h3>Problem Distribution by Theme</h3>
+              <div id="theme-breakdown"></div>
+            </div>
+            <div class="breakdown-card">
+              <h3>Problem Distribution by Research Domain</h3>
+              <div id="domain-breakdown"></div>
+            </div>
+          </div>
+
+          <div class="breakdown-grid">
+            <div class="breakdown-card">
+              <h3>Top Organizations & Ministries</h3>
+              <div id="org-breakdown"></div>
+            </div>
+            <div class="breakdown-card">
+              <h3>Reading Progress by Theme</h3>
+              <div id="theme-progress-breakdown"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Shortlist View ─────────────────────────────────── -->
+      <div id="shortlist-view" class="view">
+        <div style="padding:var(--space-6) var(--space-8);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);flex-wrap:wrap;gap:10px;">
+            <div>
+              <div class="dash-title" style="margin-bottom:2px">Shortlisted Problems</div>
+              <div style="font-size:12px;color:var(--text-tertiary)">Problems you have bookmarked for detailed team evaluation and comparison.</div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-primary" id="btn-compare-shortlist">⇌ Compare All</button>
+              <button class="btn" id="btn-export-shortlist-md">↓ Export Markdown</button>
+              <button class="btn" id="btn-export-shortlist-csv">↓ Export CSV</button>
+            </div>
+          </div>
+          <div id="shortlist-list"></div>
+        </div>
+      </div>
+
+      <!-- ── Top Candidates View ────────────────────────────── -->
+      <div id="top-view" class="view">
+        <div style="padding:var(--space-6) var(--space-8);">
+          <div class="dash-title">Top Candidates</div>
+          <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--space-6);">
+            Problems ranked by research opportunity score. These represent research-based feasibility and impact assessments to help you screen the most viable hackathon projects.
+          </div>
+          <div id="top-list-full"></div>
+        </div>
+      </div>
+
+      <!-- ── Compare View ───────────────────────────────────── -->
+      <div id="compare-view" class="view">
+        <div class="compare-header">
+          <div>
+            <div class="dash-title" style="margin-bottom:2px">Compare Shortlisted Problems</div>
+            <div style="font-size:12px;color:var(--text-tertiary)">Side-by-side technical, feasibility, and scoring comparison.</div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn" id="btn-compare-back">← Back to Shortlist</button>
+          </div>
+        </div>
+        <div id="compare-content"></div>
+      </div>
+
+      <!-- ── Settings View ──────────────────────────────────── -->
+      <div id="settings-view" class="view">
+        <div style="padding:var(--space-6) var(--space-8);">
+          <div class="dash-title">Settings & Data Management</div>
+          
+          <div class="settings-group">
+            <h3>Appearance</h3>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Dark Mode</div>
+                <div class="setting-desc">Switch between clean light and sleek dark mode</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="setting-dark-mode">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Display Density</div>
+                <div class="setting-desc">Adjust UI padding and card density</div>
+              </div>
+              <select class="filter-select" id="setting-density">
+                <option value="compact">Compact</option>
+                <option value="normal" selected>Normal</option>
+                <option value="comfortable">Comfortable</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h3>Explorer Defaults</h3>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Default Sort</div>
+                <div class="setting-desc">Preferred sort order on opening the app</div>
+              </div>
+              <select class="filter-select" id="setting-default-sort">
+                <option value="id">Problem ID</option>
+                <option value="score-desc">Highest Opportunity Score</option>
+                <option value="alpha">Alphabetical</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Show Research Sections</div>
+                <div class="setting-desc">Display inference, feasibility, and technical breakdown in detail view</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="setting-show-research" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h3>Data Persistence & Backup</h3>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Automatic Persistence</div>
+                <div class="setting-desc">All read marks, shortlist items, personal notes, and scores are automatically saved to your browser storage (localStorage) and persistent file.</div>
+              </div>
+              <span class="tag tag-cat" style="background:var(--green-light);color:var(--green);border:1px solid var(--green-border)">Active ✓</span>
+            </div>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Export User Progress (JSON)</div>
+                <div class="setting-desc">Download a backup file containing all your notes, shortlist, read status, and scores</div>
+              </div>
+              <button class="btn btn-primary" id="btn-export">↓ Export JSON Backup</button>
+            </div>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Import User Progress (JSON)</div>
+                <div class="setting-desc">Restore your progress from a saved JSON backup file on any device</div>
+              </div>
+              <input type="file" id="import-file-input" accept=".json" style="display:none">
+              <button class="btn" id="btn-import-trigger">↑ Import Backup</button>
+            </div>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Export Shortlist Report</div>
+                <div class="setting-desc">Download a Markdown summary of your shortlisted problems to share with team members</div>
+              </div>
+              <button class="btn" id="btn-export-md-settings">↓ Export Markdown</button>
+            </div>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Reset All Progress</div>
+                <div class="setting-desc">Clear your read status, shortlist, personal notes, and scores (original research remains intact)</div>
+              </div>
+              <button class="btn" id="btn-reset" style="color:var(--red);border-color:var(--red-border)">⚠ Reset Progress</button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h3>About Dataset</h3>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Smart India Hackathon (SIH) 2026</div>
+                <div class="setting-desc">226 Verified Problem Statements (SIH26001 – SIH26226)</div>
+              </div>
+            </div>
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Master Research Source</div>
+                <div class="setting-desc">SIH_2026_MASTER_RESEARCH.md (Primary Source of Truth)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+
+    <!-- ── Detail View (overlays content) ────────────────────── -->
+    <div id="detail-view">
+      <div id="detail-topbar">
+        <button class="back-btn" id="btn-back">← Back to List</button>
+        <div style="flex:1;min-width:0;overflow:hidden;">
+          <div class="detail-id" id="detail-nav-id"></div>
+        </div>
+        <button class="btn" id="detail-read-btn">Mark Read</button>
+        <button class="btn" id="detail-star-btn">☆ Shortlist</button>
+      </div>
+      <div id="detail-content">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

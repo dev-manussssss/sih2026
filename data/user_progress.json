@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-08-28T04:58:39Z",
+  "read": [
+    "SIH26001",
+    "SIH26002",
+    "SIH26003"
+  ],
+  "shortlist": [],
+  "notes": {},
+  "personal_scores": {},
+  "tags": {},
+  "recently_viewed": [
+    "SIH26006",
+    "SIH26001"
+  ],
+  "preferences": {
+    "theme": "light",
+    "density": "normal",
+    "default_sort": "id",
+    "show_research_sections": true
+  }
+}
