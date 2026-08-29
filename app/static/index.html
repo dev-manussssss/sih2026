@@ -2,52 +2,93 @@
 <html lang="en" data-theme="light" data-density="normal">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SIH 2026 Problem Statement Explorer — Browse, research, evaluate, score, compare and select all 226 Smart India Hackathon problem statements.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#132c4a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fbf9f8" media="(prefers-color-scheme: light)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SIH 2026 Explorer">
+  <meta name="description" content="SIH 2026 Problem Statement Explorer — Browse, research, evaluate, score, compare and select all 226 Smart India Hackathon problem statements with market research, pitch ideas, and official SIH descriptions.">
   <title>SIH 2026 Problem Explorer</title>
-  <!-- Embedded SVG Favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231d4ed8'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E" type="image/svg+xml">
+  
+  <!-- Embedded SVG Favicon — Hex-node logomark -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 27.86,8.5 27.86,21.5 16,28 4.14,21.5 4.14,8.5' fill='%23132c4a' stroke='none'/%3E%3Cpolygon points='16,7 23.66,11.25 23.66,19.75 16,24 8.34,19.75 8.34,11.25' fill='none' stroke='%23b1c8ed' stroke-width='1.2'/%3E%3Ccircle cx='16' cy='15.5' r='2.5' fill='%23b1c8ed'/%3E%3Ccircle cx='16' cy='9' r='1.2' fill='%23b1c8ed' opacity='0.6'/%3E%3Ccircle cx='22' cy='12.5' r='1.2' fill='%23b1c8ed' opacity='0.6'/%3E%3Ccircle cx='22' cy='19.5' r='1.2' fill='%23b1c8ed' opacity='0.6'/%3E%3Ccircle cx='16' cy='23' r='1.2' fill='%23b1c8ed' opacity='0.6'/%3E%3Ccircle cx='10' cy='19.5' r='1.2' fill='%23b1c8ed' opacity='0.6'/%3E%3Ccircle cx='10' cy='12.5' r='1.2' fill='%23b1c8ed' opacity='0.6'/%3E%3C/svg%3E" type="image/svg+xml">
+  
+  <!-- Google Fonts: Source Serif 4 (headlines) + Inter (body) + Hanken Grotesk (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Inter:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="app">
 
-  <!-- ── Sidebar ──────────────────────────────────────────────── -->
+  <!-- ── Desktop Sidebar ──────────────────────────────────────── -->
   <nav id="sidebar">
     <div class="sidebar-logo">
-      <h1>SIH 2026</h1>
-      <div class="subtitle">Problem Explorer</div>
+      <div class="logo-icon-wrap">
+        <!-- Hex-node logomark SVG -->
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <polygon points="16,2 27.86,8.5 27.86,21.5 16,28 4.14,21.5 4.14,8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="16" cy="15.5" r="2.8" fill="currentColor"/>
+          <line x1="16" y1="2" x2="16" y2="12.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+          <line x1="27.86" y1="8.5" x2="18.4" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+          <line x1="27.86" y1="21.5" x2="18.4" y2="17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+          <line x1="16" y1="28" x2="16" y2="18.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+          <line x1="4.14" y1="21.5" x2="13.6" y2="17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+          <line x1="4.14" y1="8.5" x2="13.6" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+      </div>
+      <div>
+        <h1>SIH 2026</h1>
+        <div class="subtitle">Problem Explorer Pro</div>
+      </div>
     </div>
 
     <div class="sidebar-section">
       <div class="sidebar-section-label">Explore</div>
       <div class="nav-item active" data-view="all" id="nav-all">
-        <span class="nav-icon">☰</span> All Problems
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="18" r="1"/></svg>
+        </span> All Problems
         <span class="nav-badge" id="badge-all">226</span>
       </div>
       <div class="nav-item" data-view="dashboard" id="nav-dashboard">
-        <span class="nav-icon">◉</span> Dashboard
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </span> Dashboard
       </div>
       <div class="nav-item" data-view="shortlist" id="nav-shortlist">
-        <span class="nav-icon">★</span> Shortlist
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M12 7l1.5 3h3l-2.5 2 1 3L12 13.5 9 15l1-3-2.5-2h3z" stroke-width="1.5"/></svg>
+        </span> Shortlist
         <span class="nav-badge" id="badge-shortlist">0</span>
       </div>
       <div class="nav-item" data-view="top" id="nav-top">
-        <span class="nav-icon">▲</span> Top Candidates
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+        </span> Top Candidates
       </div>
       <div class="nav-item" data-view="compare" id="nav-compare">
-        <span class="nav-icon">⇌</span> Compare
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="8" height="18" rx="1"/><rect x="14" y="3" width="8" height="18" rx="1"/><path d="M10 8h4M10 12h4M10 16h4"/></svg>
+        </span> Compare
       </div>
     </div>
 
     <div class="sidebar-section">
       <div class="sidebar-section-label">Status</div>
       <div class="nav-item" data-view="all" data-filter="unread" id="nav-unread">
-        <span class="nav-icon">○</span> Unread
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>
+        </span> Unread
         <span class="nav-badge" id="badge-unread">226</span>
       </div>
       <div class="nav-item" data-view="all" data-filter="read" id="nav-read">
-        <span class="nav-icon">✓</span> Read
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="9 12 11 14 15 10"/></svg>
+        </span> Read
         <span class="nav-badge" id="badge-read">0</span>
       </div>
     </div>
@@ -55,19 +96,25 @@
     <div class="sidebar-section">
       <div class="sidebar-section-label">Track</div>
       <div class="nav-item" data-view="all" data-filter="software" id="nav-software">
-        <span class="nav-icon">💻</span> Software
-        <span class="nav-badge" id="badge-software">—</span>
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+        </span> Software
+        <span class="nav-badge" id="badge-software">172</span>
       </div>
       <div class="nav-item" data-view="all" data-filter="hardware" id="nav-hardware">
-        <span class="nav-icon">⚙</span> Hardware
-        <span class="nav-badge" id="badge-hardware">—</span>
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><line x1="9" y1="1" x2="9" y2="5"/><line x1="15" y1="1" x2="15" y2="5"/><line x1="9" y1="19" x2="9" y2="23"/><line x1="15" y1="19" x2="15" y2="23"/><line x1="20" y1="9" x2="24" y2="9"/><line x1="20" y1="14" x2="24" y2="14"/><line x1="0" y1="9" x2="4" y2="9"/><line x1="0" y1="14" x2="4" y2="14"/></svg>
+        </span> Hardware
+        <span class="nav-badge" id="badge-hardware">54</span>
       </div>
     </div>
 
     <div class="sidebar-section">
       <div class="sidebar-section-label">Preferences</div>
       <div class="nav-item" data-view="settings" id="nav-settings">
-        <span class="nav-icon">⚙</span> Settings & Data
+        <span class="nav-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </span> Settings & Data
       </div>
     </div>
 
@@ -79,137 +126,304 @@
     </div>
   </nav>
 
+  <!-- ── Mobile Drawer Overlay ─────────────────────────────────── -->
+  <div id="drawer-overlay" class="drawer-overlay"></div>
+
+  <!-- ── Mobile Slide-Over Drawer ─────────────────────────────── -->
+  <aside id="mobile-drawer" class="mobile-drawer">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <div class="logo-icon-wrap" style="width:32px;height:32px;font-size:14px;">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="16,2 27.86,8.5 27.86,21.5 16,28 4.14,21.5 4.14,8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="16" cy="15.5" r="2.8" fill="currentColor"/>
+            <line x1="16" y1="2" x2="16" y2="12.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+            <line x1="27.86" y1="8.5" x2="18.4" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+            <line x1="4.14" y1="8.5" x2="13.6" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+        </div>
+        <div>
+          <h2>SIH 2026</h2>
+          <div class="drawer-subtitle">Filters & Navigation</div>
+        </div>
+      </div>
+      <button class="drawer-close-btn" id="drawer-close" aria-label="Close menu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer-content">
+      <div class="drawer-group">
+        <div class="drawer-label">Views</div>
+        <div class="drawer-nav-item active" data-view="all"><span class="nav-icon">☰</span> All Problems <span class="nav-badge" id="m-badge-all">226</span></div>
+        <div class="drawer-nav-item" data-view="dashboard"><span class="nav-icon">◉</span> Dashboard Overview</div>
+        <div class="drawer-nav-item" data-view="shortlist"><span class="nav-icon">★</span> Shortlisted Problems <span class="nav-badge" id="m-badge-shortlist">0</span></div>
+        <div class="drawer-nav-item" data-view="top"><span class="nav-icon">▲</span> Top Candidates (Scored)</div>
+        <div class="drawer-nav-item" data-view="compare"><span class="nav-icon">⇌</span> Compare Shortlist</div>
+        <div class="drawer-nav-item" data-view="settings"><span class="nav-icon">⚙</span> Settings & Backup</div>
+      </div>
+
+      <div class="drawer-group">
+        <div class="drawer-label">Filter by Track</div>
+        <div class="drawer-chips">
+          <button class="drawer-chip active" data-drawer-filter="category" data-val="">All (226)</button>
+          <button class="drawer-chip" data-drawer-filter="category" data-val="Software"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Software (172)</button>
+          <button class="drawer-chip" data-drawer-filter="category" data-val="Hardware"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>Hardware (54)</button>
+        </div>
+      </div>
+
+      <div class="drawer-group">
+        <div class="drawer-label">Filter by Status</div>
+        <div class="drawer-chips">
+          <button class="drawer-chip active" data-drawer-filter="read" data-val="">All</button>
+          <button class="drawer-chip" data-drawer-filter="read" data-val="unread"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="margin-right:3px"><circle cx="12" cy="12" r="9"/></svg>Unread</button>
+          <button class="drawer-chip" data-drawer-filter="read" data-val="read"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="margin-right:3px"><circle cx="12" cy="12" r="9"/><polyline points="9 12 11 14 15 10"/></svg>Read</button>
+          <button class="drawer-chip" data-drawer-filter="read" data-val="shortlisted"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="margin-right:3px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Shortlisted</button>
+        </div>
+      </div>
+
+      <div class="drawer-group">
+        <div class="drawer-label">Filter by Theme</div>
+        <select class="drawer-select" id="drawer-theme-filter">
+          <option value="">All Themes (18)</option>
+        </select>
+      </div>
+
+      <div class="drawer-group">
+        <div class="drawer-label">Filter by Organization</div>
+        <select class="drawer-select" id="drawer-org-filter">
+          <option value="">All Organizations (30)</option>
+        </select>
+      </div>
+
+      <div class="drawer-group">
+        <div class="drawer-label">Appearance</div>
+        <div class="drawer-toggle-row">
+          <span>Dark Mode</span>
+          <label class="toggle">
+            <input type="checkbox" id="drawer-dark-mode">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="drawer-footer">
+        <div class="sidebar-progress" id="drawer-progress-text">0 / 226 read</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="drawer-progress-bar" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
   <!-- ── Main Area ────────────────────────────────────────────── -->
   <div id="main">
 
-    <!-- Top bar (shown for list views) -->
+    <!-- ── Mobile Topbar ──────────────────────────────────────── -->
+    <header id="mobile-topbar" class="mobile-topbar">
+      <button class="mobile-icon-btn" id="btn-open-drawer" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="mobile-brand">
+        <div class="mobile-logo-mark">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="16,2 27.86,8.5 27.86,21.5 16,28 4.14,21.5 4.14,8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="16" cy="15.5" r="3" fill="currentColor"/>
+            <line x1="16" y1="2" x2="16" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+            <line x1="27.86" y1="8.5" x2="18.6" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+            <line x1="4.14" y1="8.5" x2="13.4" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+          </svg>
+        </div>
+        <span class="mobile-brand-title">SIH 2026</span>
+      </div>
+      <div class="mobile-topbar-actions">
+        <button class="mobile-icon-btn" id="btn-toggle-search" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <button class="mobile-icon-btn" id="btn-toggle-filter-sheet" aria-label="Filters">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+          <span class="filter-count-badge" id="mobile-filter-count"></span>
+        </button>
+        <button class="mobile-icon-btn" id="btn-theme-quick" aria-label="Toggle theme">
+          <span id="theme-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ── Top bar (shown for desktop & expanded mobile search) ── -->
     <div id="topbar">
       <div class="topbar-title" id="topbar-title">All Problems</div>
-      <div class="search-wrap">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="search-input" placeholder="Search problems, orgs, themes, technologies… (Press '/' to focus)" autocomplete="off">
+      <div class="search-wrap" id="search-wrap">
+        <span class="search-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <input type="text" id="search-input" placeholder="Search problems, orgs, themes, tech, pitch… (Press '/' to focus)" autocomplete="off">
+        <button class="search-clear-btn" id="search-clear" style="display:none">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
       <div class="topbar-actions">
         <select class="filter-select" id="sort-select" title="Sort by">
-          <option value="id">Sort: Problem ID</option>
+          <option value="id">Sort: Problem ID (001 → 226)</option>
+          <option value="score-desc">Highest Opportunity Score</option>
+          <option value="impact-desc">Highest Impact</option>
+          <option value="feasibility-desc">Highest Feasibility</option>
           <option value="alpha">Title: A → Z</option>
           <option value="alpha-desc">Title: Z → A</option>
-          <option value="score-desc">Highest Opportunity Score</option>
-          <option value="feasibility-desc">Highest Feasibility</option>
-          <option value="impact-desc">Highest Impact</option>
           <option value="recent">Recently Viewed</option>
         </select>
       </div>
     </div>
 
-    <!-- Filter bar -->
+    <!-- ── Filter bar ─────────────────────────────────────────── -->
     <div id="filterbar">
-      <div class="filter-group">
-        <span class="filter-label">Track</span>
-        <span class="filter-chip active" data-filter="category" data-value="" id="fc-all">All</span>
-        <span class="filter-chip" data-filter="category" data-value="Software" id="fc-sw">Software</span>
-        <span class="filter-chip" data-filter="category" data-value="Hardware" id="fc-hw">Hardware</span>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Status</span>
-        <span class="filter-chip active" data-filter="read" data-value="" id="fc-rs-all">All</span>
-        <span class="filter-chip" data-filter="read" data-value="unread" id="fc-unread">Unread</span>
-        <span class="filter-chip" data-filter="read" data-value="read" id="fc-read">Read</span>
-        <span class="filter-chip" data-filter="read" data-value="shortlisted" id="fc-sl">Shortlisted</span>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Theme</span>
-        <select class="filter-select" id="theme-filter">
-          <option value="">All Themes</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Org</span>
-        <select class="filter-select" id="org-filter">
-          <option value="">All Orgs</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Domain</span>
-        <select class="filter-select" id="rescat-filter">
-          <option value="">All Domains</option>
-        </select>
+      <div class="filter-scroll-container">
+        <div class="filter-group">
+          <span class="filter-label">Track</span>
+          <span class="filter-chip active" data-filter="category" data-value="" id="fc-all">All</span>
+          <span class="filter-chip" data-filter="category" data-value="Software" id="fc-sw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:3px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Software</span>
+          <span class="filter-chip" data-filter="category" data-value="Hardware" id="fc-hw"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:3px"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>Hardware</span>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Status</span>
+          <span class="filter-chip active" data-filter="read" data-value="" id="fc-rs-all">All</span>
+          <span class="filter-chip" data-filter="read" data-value="unread" id="fc-unread">Unread</span>
+          <span class="filter-chip" data-filter="read" data-value="read" id="fc-read">Read</span>
+          <span class="filter-chip" data-filter="read" data-value="shortlisted" id="fc-sl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:3px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Starred</span>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Theme</span>
+          <select class="filter-select" id="theme-filter">
+            <option value="">All Themes</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Org</span>
+          <select class="filter-select" id="org-filter">
+            <option value="">All Orgs</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Domain</span>
+          <select class="filter-select" id="rescat-filter">
+            <option value="">All Domains</option>
+          </select>
+        </div>
       </div>
       <div class="result-count" id="result-count">226 problems</div>
     </div>
 
-    <!-- Content Area -->
-    <div id="content">
+    <!-- ── Main Content Area ──────────────────────────────────── -->
+    <main id="content">
 
-      <!-- ── All Problems View ───────────────────────────────── -->
+      <!-- ── All Problems List View ───────────────────────────── -->
       <div id="list-view" class="view active">
         <div id="problems-list">
-          <div class="loading-state">Loading SIH 2026 problem statements…</div>
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <div>Loading SIH 2026 problem statements & research…</div>
+          </div>
         </div>
       </div>
 
-      <!-- ── Dashboard View ─────────────────────────────────── -->
+      <!-- ── Dashboard View ───────────────────────────────────── -->
       <div id="dashboard-view" class="view">
-        <div style="padding:var(--space-6) var(--space-8);">
-          <div class="dash-title">Dashboard Overview</div>
-
-          <div class="stats-grid" id="stats-grid">
-            <div class="stat-card">
-              <div class="sc-num" id="stat-total">226</div>
-              <div class="sc-label">Total Problems</div>
-            </div>
-            <div class="stat-card">
-              <div class="sc-num" id="stat-read">0</div>
-              <div class="sc-label">Read</div>
-              <div class="sc-sub" id="stat-read-pct">0% complete</div>
-            </div>
-            <div class="stat-card">
-              <div class="sc-num" id="stat-unread">226</div>
-              <div class="sc-label">Unread Remaining</div>
-            </div>
-            <div class="stat-card">
-              <div class="sc-num" id="stat-shortlist">0</div>
-              <div class="sc-label">Shortlisted</div>
-            </div>
-            <div class="stat-card">
-              <div class="sc-num" id="stat-sw">151</div>
-              <div class="sc-label">Software</div>
-            </div>
-            <div class="stat-card">
-              <div class="sc-num" id="stat-hw">29</div>
-              <div class="sc-label">Hardware</div>
+        <div class="view-inner-pad">
+          <div class="dash-header">
+            <div>
+              <h2 class="dash-title">Executive Dashboard</h2>
+              <div class="dash-subtitle">Real-time overview of the 226 SIH problem statements, research feasibility, and team evaluation progress.</div>
             </div>
           </div>
 
-          <!-- Progress bar -->
-          <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-5);margin-bottom:var(--space-8);">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3);">
-              <span style="font-size:13px;font-weight:600;">Overall Reading Progress</span>
-              <span style="font-size:13px;color:var(--text-tertiary)" id="dash-progress-pct">0%</span>
+          <div class="stats-grid" id="stats-grid">
+            <div class="stat-card stat-total">
+              <div class="sc-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <div class="sc-num" id="stat-total">226</div>
+              <div class="sc-label">Total Problems</div>
+              <div class="sc-sub">SIH26001 – SIH26226</div>
             </div>
-            <div class="progress-bar-wrap" style="height:10px;">
+            <div class="stat-card stat-read">
+              <div class="sc-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="sc-num" id="stat-read">0</div>
+              <div class="sc-label">Read Completed</div>
+              <div class="sc-sub" id="stat-read-pct">0% complete</div>
+            </div>
+            <div class="stat-card stat-unread">
+              <div class="sc-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div class="sc-num" id="stat-unread">226</div>
+              <div class="sc-label">Unread Remaining</div>
+              <div class="sc-sub">To review</div>
+            </div>
+            <div class="stat-card stat-shortlist">
+              <div class="sc-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div class="sc-num" id="stat-shortlist">0</div>
+              <div class="sc-label">Shortlisted</div>
+              <div class="sc-sub">Team candidates</div>
+            </div>
+            <div class="stat-card stat-sw">
+              <div class="sc-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+              </div>
+              <div class="sc-num" id="stat-sw">172</div>
+              <div class="sc-label">Software Track</div>
+              <div class="sc-sub">76.1% of catalogue</div>
+            </div>
+            <div class="stat-card stat-hw">
+              <div class="sc-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><line x1="9" y1="1" x2="9" y2="5"/><line x1="15" y1="1" x2="15" y2="5"/><line x1="9" y1="19" x2="9" y2="23"/><line x1="15" y1="19" x2="15" y2="23"/><line x1="20" y1="9" x2="24" y2="9"/><line x1="20" y1="14" x2="24" y2="14"/><line x1="0" y1="9" x2="4" y2="9"/><line x1="0" y1="14" x2="4" y2="14"/></svg>
+              </div>
+              <div class="sc-num" id="stat-hw">54</div>
+              <div class="sc-label">Hardware Track</div>
+              <div class="sc-sub">23.9% of catalogue</div>
+            </div>
+          </div>
+
+          <!-- Overall Progress card -->
+          <div class="dash-progress-card">
+            <div class="dash-progress-header">
+              <div>
+                <div class="dash-progress-title">Overall Team Screening Progress</div>
+                <div class="dash-progress-desc">Track how many problem statements your team has evaluated and marked read.</div>
+              </div>
+              <span class="dash-progress-badge" id="dash-progress-pct">0%</span>
+            </div>
+            <div class="progress-bar-wrap" style="height:12px;">
               <div class="progress-bar-fill" id="dash-progress-bar" style="width:0%"></div>
             </div>
           </div>
 
-          <div class="dash-section-title">Top High-Potential Candidates (by Research Opportunity Score)</div>
+          <div class="dash-section-header">
+            <h3 class="dash-section-title">Top Scored Hackathon Opportunities</h3>
+            <span class="tag tag-cat">Highest Research Opportunity Heuristic</span>
+          </div>
           <div class="top-list" id="dash-top-list"></div>
 
           <div class="breakdown-grid">
             <div class="breakdown-card">
-              <h3>Problem Distribution by Theme</h3>
+              <h3>Problem Distribution by Theme (18 Themes)</h3>
               <div id="theme-breakdown"></div>
             </div>
             <div class="breakdown-card">
-              <h3>Problem Distribution by Research Domain</h3>
-              <div id="domain-breakdown"></div>
+              <h3>Top Government Organizations & Ministries</h3>
+              <div id="org-breakdown"></div>
             </div>
           </div>
 
           <div class="breakdown-grid">
             <div class="breakdown-card">
-              <h3>Top Organizations & Ministries</h3>
-              <div id="org-breakdown"></div>
+              <h3>Research Domains & Tech Clusters</h3>
+              <div id="domain-breakdown"></div>
             </div>
             <div class="breakdown-card">
               <h3>Reading Progress by Theme</h3>
@@ -219,60 +433,63 @@
         </div>
       </div>
 
-      <!-- ── Shortlist View ─────────────────────────────────── -->
+      <!-- ── Shortlist View ───────────────────────────────────── -->
       <div id="shortlist-view" class="view">
-        <div style="padding:var(--space-6) var(--space-8);">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);flex-wrap:wrap;gap:10px;">
+        <div class="view-inner-pad">
+          <div class="view-header-row">
             <div>
-              <div class="dash-title" style="margin-bottom:2px">Shortlisted Problems</div>
-              <div style="font-size:12px;color:var(--text-tertiary)">Problems you have bookmarked for detailed team evaluation and comparison.</div>
+              <h2 class="dash-title">Shortlisted Candidates</h2>
+              <div class="dash-subtitle">Problems bookmarked by your team with custom ratings, notes, and feasibility comparison.</div>
             </div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;">
-              <button class="btn btn-primary" id="btn-compare-shortlist">⇌ Compare All</button>
-              <button class="btn" id="btn-export-shortlist-md">↓ Export Markdown</button>
-              <button class="btn" id="btn-export-shortlist-csv">↓ Export CSV</button>
+            <div class="view-action-btns">
+              <button class="btn btn-primary" id="btn-compare-shortlist"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><rect x="2" y="3" width="8" height="18" rx="1"/><rect x="14" y="3" width="8" height="18" rx="1"/></svg>Compare All</button>
+              <button class="btn" id="btn-export-shortlist-md"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export MD</button>
+              <button class="btn" id="btn-export-shortlist-csv"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export CSV</button>
             </div>
           </div>
           <div id="shortlist-list"></div>
         </div>
       </div>
 
-      <!-- ── Top Candidates View ────────────────────────────── -->
+      <!-- ── Top Candidates View ──────────────────────────────── -->
       <div id="top-view" class="view">
-        <div style="padding:var(--space-6) var(--space-8);">
-          <div class="dash-title">Top Candidates</div>
-          <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--space-6);">
-            Problems ranked by research opportunity score. These represent research-based feasibility and impact assessments to help you screen the most viable hackathon projects.
+        <div class="view-inner-pad">
+          <div class="view-header-row">
+            <div>
+              <h2 class="dash-title">Top Opportunity Candidates</h2>
+              <div class="dash-subtitle">Ranked by overall research opportunity score combining Innovation, Impact, Technical Feasibility, Prototype Viability, and Market Need.</div>
+            </div>
           </div>
           <div id="top-list-full"></div>
         </div>
       </div>
 
-      <!-- ── Compare View ───────────────────────────────────── -->
+      <!-- ── Compare View ─────────────────────────────────────── -->
       <div id="compare-view" class="view">
         <div class="compare-header">
           <div>
-            <div class="dash-title" style="margin-bottom:2px">Compare Shortlisted Problems</div>
-            <div style="font-size:12px;color:var(--text-tertiary)">Side-by-side technical, feasibility, and scoring comparison.</div>
+            <h2 class="dash-title">Compare Shortlisted Problems</h2>
+            <div class="dash-subtitle">Side-by-side comparison of official requirements, unique pitch, market feasibility, tech stack, and scores.</div>
           </div>
-          <div style="display:flex;gap:8px;">
-            <button class="btn" id="btn-compare-back">← Back to Shortlist</button>
+          <div class="compare-actions">
+            <button class="btn" id="btn-compare-back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back to Shortlist</button>
           </div>
         </div>
         <div id="compare-content"></div>
       </div>
 
-      <!-- ── Settings View ──────────────────────────────────── -->
+      <!-- ── Settings View ────────────────────────────────────── -->
       <div id="settings-view" class="view">
-        <div style="padding:var(--space-6) var(--space-8);">
-          <div class="dash-title">Settings & Data Management</div>
+        <div class="view-inner-pad">
+          <h2 class="dash-title">Settings & Data Management</h2>
+          <div class="dash-subtitle">Manage theme, display density, and persistent backup of all your notes and progress.</div>
           
           <div class="settings-group">
-            <h3>Appearance</h3>
+            <h3>Appearance & Interface</h3>
             <div class="setting-row">
               <div>
-                <div class="setting-label">Dark Mode</div>
-                <div class="setting-desc">Switch between clean light and sleek dark mode</div>
+                <div class="setting-label">Dark Theme</div>
+                <div class="setting-desc">Switch between crisp light mode and sleek modern dark mode</div>
               </div>
               <label class="toggle">
                 <input type="checkbox" id="setting-dark-mode">
@@ -282,7 +499,7 @@
             <div class="setting-row">
               <div>
                 <div class="setting-label">Display Density</div>
-                <div class="setting-desc">Adjust UI padding and card density</div>
+                <div class="setting-desc">Adjust UI padding and card size</div>
               </div>
               <select class="filter-select" id="setting-density">
                 <option value="compact">Compact</option>
@@ -296,8 +513,8 @@
             <h3>Explorer Defaults</h3>
             <div class="setting-row">
               <div>
-                <div class="setting-label">Default Sort</div>
-                <div class="setting-desc">Preferred sort order on opening the app</div>
+                <div class="setting-label">Default Sort Order</div>
+                <div class="setting-desc">Preferred sort on launch</div>
               </div>
               <select class="filter-select" id="setting-default-sort">
                 <option value="id">Problem ID</option>
@@ -307,8 +524,8 @@
             </div>
             <div class="setting-row">
               <div>
-                <div class="setting-label">Show Research Sections</div>
-                <div class="setting-desc">Display inference, feasibility, and technical breakdown in detail view</div>
+                <div class="setting-label">Show Research & Pitch Sections</div>
+                <div class="setting-desc">Show market research, unique pitch, and feasibility in detail view</div>
               </div>
               <label class="toggle">
                 <input type="checkbox" id="setting-show-research" checked>
@@ -321,76 +538,156 @@
             <h3>Data Persistence & Backup</h3>
             <div class="setting-row">
               <div>
-                <div class="setting-label">Automatic Persistence</div>
-                <div class="setting-desc">All read marks, shortlist items, personal notes, and scores are automatically saved to your browser storage (localStorage) and persistent file.</div>
+                <div class="setting-label">Automatic Progress Preservation</div>
+                <div class="setting-desc">All read marks, shortlist items, personal notes, and team ratings are stored offline-first in localStorage and synchronized with server storage.</div>
               </div>
               <span class="tag tag-cat" style="background:var(--green-light);color:var(--green);border:1px solid var(--green-border)">Active ✓</span>
             </div>
             <div class="setting-row">
               <div>
-                <div class="setting-label">Export User Progress (JSON)</div>
-                <div class="setting-desc">Download a backup file containing all your notes, shortlist, read status, and scores</div>
+                <div class="setting-label">Export Progress Backup (JSON)</div>
+                <div class="setting-desc">Download a complete JSON backup file of all notes, ratings, read statuses, and shortlisted ideas</div>
               </div>
-              <button class="btn btn-primary" id="btn-export">↓ Export JSON Backup</button>
+              <button class="btn btn-primary" id="btn-export"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export JSON Backup</button>
             </div>
             <div class="setting-row">
               <div>
-                <div class="setting-label">Import User Progress (JSON)</div>
-                <div class="setting-desc">Restore your progress from a saved JSON backup file on any device</div>
+                <div class="setting-label">Import Progress Backup (JSON)</div>
+                <div class="setting-desc">Restore your saved team notes and shortlist on any mobile or desktop device</div>
               </div>
               <input type="file" id="import-file-input" accept=".json" style="display:none">
-              <button class="btn" id="btn-import-trigger">↑ Import Backup</button>
+              <button class="btn" id="btn-import-trigger"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Import Backup File</button>
             </div>
             <div class="setting-row">
               <div>
-                <div class="setting-label">Export Shortlist Report</div>
-                <div class="setting-desc">Download a Markdown summary of your shortlisted problems to share with team members</div>
+                <div class="setting-label">Export Shortlist Report (Markdown)</div>
+                <div class="setting-desc">Generate a formatted team report ready to paste into Notion, Slack, or GitHub</div>
               </div>
-              <button class="btn" id="btn-export-md-settings">↓ Export Markdown</button>
+              <button class="btn" id="btn-export-md-settings"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export Markdown</button>
             </div>
             <div class="setting-row">
               <div>
                 <div class="setting-label">Reset All Progress</div>
-                <div class="setting-desc">Clear your read status, shortlist, personal notes, and scores (original research remains intact)</div>
+                <div class="setting-desc">Clear your notes, read status, and shortlist (the master research dataset is preserved)</div>
               </div>
-              <button class="btn" id="btn-reset" style="color:var(--red);border-color:var(--red-border)">⚠ Reset Progress</button>
+              <button class="btn" id="btn-reset" style="color:var(--red);border-color:var(--red-border)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.9L1 10"/></svg>Reset Progress</button>
             </div>
           </div>
 
           <div class="settings-group">
-            <h3>About Dataset</h3>
+            <h3>Dataset & Research Source</h3>
             <div class="setting-row">
               <div>
-                <div class="setting-label">Smart India Hackathon (SIH) 2026</div>
-                <div class="setting-desc">226 Verified Problem Statements (SIH26001 – SIH26226)</div>
+                <div class="setting-label">Smart India Hackathon (SIH) 2026 Edition</div>
+                <div class="setting-desc">226 Verified Problem Statements (SIH26001 – SIH26226) · 172 Software · 54 Hardware</div>
               </div>
             </div>
             <div class="setting-row">
               <div>
-                <div class="setting-label">Master Research Source</div>
-                <div class="setting-desc">SIH_2026_MASTER_RESEARCH.md (Primary Source of Truth)</div>
+                <div class="setting-label">Master Research Dossier</div>
+                <div class="setting-desc">SIH_2026_MASTER_RESEARCH_FINAL.md + Official SIH Canonical Mirror</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-    </div><!-- /content -->
+    </main><!-- /content -->
 
-    <!-- ── Detail View (overlays content) ────────────────────── -->
+    <!-- ── Problem Detail View (Full View Overlay) ───────────── -->
     <div id="detail-view">
-      <div id="detail-topbar">
-        <button class="back-btn" id="btn-back">← Back to List</button>
-        <div style="flex:1;min-width:0;overflow:hidden;">
-          <div class="detail-id" id="detail-nav-id"></div>
+      <div id="detail-topbar" class="detail-topbar">
+        <div class="detail-topbar-left">
+          <button class="back-btn" id="btn-back" aria-label="Back">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span class="back-text">Back</span>
+          </button>
+          <div class="detail-nav-navigators">
+            <button class="detail-nav-btn" id="btn-prev-problem" title="Previous Problem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg> Prev</button>
+            <button class="detail-nav-btn" id="btn-next-problem" title="Next Problem">Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
         </div>
-        <button class="btn" id="detail-read-btn">Mark Read</button>
-        <button class="btn" id="detail-star-btn">☆ Shortlist</button>
+        
+        <div class="detail-nav-id" id="detail-nav-id">SIH26001</div>
+
+        <div class="detail-topbar-actions">
+          <button class="btn" id="detail-read-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><circle cx="12" cy="12" r="9"/><polyline points="9 12 11 14 15 10"/></svg>Mark Read</button>
+          <button class="btn" id="detail-star-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Shortlist</button>
+          <button class="btn btn-icon" id="detail-share-btn" title="Copy Problem Summary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
       </div>
+
+      <!-- Segmented Tab Navigation for Detail View -->
+      <div class="detail-tabs-bar" id="detail-tabs-bar">
+        <button class="detail-tab active" data-tab="official">
+          <span class="tab-icon">🏛️</span>
+          <span class="tab-label">Official SIH Problem</span>
+        </button>
+        <button class="detail-tab" data-tab="pitch">
+          <span class="tab-icon">💡</span>
+          <span class="tab-label">Unique Pitch & Market</span>
+        </button>
+        <button class="detail-tab" data-tab="tech">
+          <span class="tab-icon">⚡</span>
+          <span class="tab-label">Tech & Feasibility</span>
+        </button>
+        <button class="detail-tab" data-tab="notes">
+          <span class="tab-icon">⭐</span>
+          <span class="tab-label">Team Notes & Rating</span>
+        </button>
+      </div>
+
       <div id="detail-content">
-        <!-- Populated by JS -->
+        <!-- Dynamically rendered by app.js -->
       </div>
     </div>
+
+    <!-- ── Mobile Bottom Navigation Bar ──────────────────────── -->
+    <nav id="bottom-nav" class="bottom-nav" aria-label="Mobile Navigation">
+      <button class="bottom-nav-item active" data-view="all" id="bnav-all">
+        <div class="bnav-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+          <span class="bnav-badge" id="bnav-badge-all">226</span>
+        </div>
+        <span class="bnav-label">Explore</span>
+      </button>
+
+      <button class="bottom-nav-item" data-view="dashboard" id="bnav-dashboard">
+        <div class="bnav-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        </div>
+        <span class="bnav-label">Dashboard</span>
+      </button>
+
+      <button class="bottom-nav-item" data-view="shortlist" id="bnav-shortlist">
+        <div class="bnav-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="bnav-badge" id="bnav-badge-shortlist">0</span>
+        </div>
+        <span class="bnav-label">Shortlist</span>
+      </button>
+
+      <button class="bottom-nav-item" data-view="top" id="bnav-top">
+        <div class="bnav-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>
+        </div>
+        <span class="bnav-label">Top Scored</span>
+      </button>
+
+      <button class="bottom-nav-item" data-view="compare" id="bnav-compare">
+        <div class="bnav-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"></path><path d="M4 20L21 3"></path><path d="M21 16v5h-5"></path><path d="M15 15l6 6"></path><path d="M4 4l5 5"></path></svg>
+        </div>
+        <span class="bnav-label">Compare</span>
+      </button>
+
+      <button class="bottom-nav-item" id="bnav-more">
+        <div class="bnav-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+        </div>
+        <span class="bnav-label">More</span>
+      </button>
+    </nav>
 
   </div><!-- /main -->
 </div><!-- /app -->
