@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "public": true,
   "cleanUrls": true,
   "routes": [
     { "src": "/api/problems", "dest": "/data/sih_2026_problems.json" },
